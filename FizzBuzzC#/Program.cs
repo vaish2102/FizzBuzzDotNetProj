@@ -14,8 +14,8 @@ namespace FizzBuzz {
             for(var num = 1 ; num <101; num++){
                 checkNum(num);
             }
-            foreach(var elem in output){
-             Console.WriteLine(elem);
+            foreach(var element in output){
+             Console.WriteLine(element);
             } 
         }
 
