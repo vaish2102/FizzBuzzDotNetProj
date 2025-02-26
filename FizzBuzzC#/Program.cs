@@ -4,18 +4,11 @@ using System;
 
 namespace FizzBuzz {
     public class Program {
-        
         public static void Main(string [] args){
-            PrintOutput();
-        }
-
-        public static void PrintOutput(){
-            for (int num = 1; num <= 260; num++){
+             for (int num = 1; num <= 300; num++){
                 Console.WriteLine(GetOutput(num));
             }
         }
-
-        
         public static List<(int, Func<List<string>, List<string>>)> RulesList = new List<(int, Func<List<string>, List<string>>)> (){
             (3, AddToResult("Fizz")),
             (13, AddToResult("Fezz")),
@@ -36,25 +29,22 @@ namespace FizzBuzz {
             }
             return num.ToString();
         }
-
-        public static Func<List<string>, List<string>> AddToResult(string text)
-        {
-            return (List<string> output) =>{
+        public static Func<List<string>, List<string>> AddToResult(string text){
+            return (output) => {
                 output.Add(text);
                 return output;
             };
         }
+        
         public static List<string> BongRule(List<string> output){
-            output = output.Where(val => val == "Fezz").ToList();
-            output = AddToResult("Bong")(output);
+            output.RemoveAll(val => val !="Fezz");
+            output.Add("Bong");
             return output;
         }
 
-        public static List<string> ReverseRule(List<string> output)
-        {
+        public static List<string> ReverseRule(List<string> output){
             output.Reverse();
             return output;
         }
-
     } 
 }
